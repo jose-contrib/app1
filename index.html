@@ -253,7 +253,7 @@
     			<div class="col-md-6">
     				<div class="input_main">
                        <div class="container">
-                          <form action="jose.saavedra.pinto@gmail.com" method="post" enctype="text/plain">
+                     <!--     <form action="jose.saavedra.pinto@gmail.com" method="post" enctype="text/plain">
                             <div class="form-group">
                               <input type="text" class="email-bt" placeholder="Nombre" name="Name">
                             </div>
@@ -274,7 +274,22 @@
 									<input type="submit" value="Send">
 									<input type="reset" value="Reset">
 									</div>
-                            </form>
+                            </form> -->
+							<form>
+ <div class="emailBox">
+   <label for="emailAddress">Tu dirección de correoᵉ</label><br>
+   <input id="emailAddress" type="email" size="64" maxLength="64" required
+          placeholder="jose.saavedra.pinto@gmail.com" pattern=".+@gmail.com"
+          title="Por favor, solo proporciona una dirección de correoᵉ corporativa que te haya proporcionado Best Startup Ever">
+ </div>
+
+ <div class="messageBox">
+   <label for="message">Solicitud</label><br>
+   <textarea id="message" cols="80" rows="8" required
+             placeholder="Mis zapatos están demasiado apretados y he olvidado cómo bailar."></textarea>
+ </div>
+  <input type="submit" value="Envía solicitud">
+</form>
                           
                        </div> 
                        <div class="send_btn">
