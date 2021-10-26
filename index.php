@@ -1,48 +1,51 @@
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-require 'vendor/autoload.php';
-    $mail = new PHPMailer;
-    $mail->isSMTP();
-    $mail->Host = 'smtp.hostinger.com';
-    $mail->Port = 587;
-    $mail->SMTPAuth = true;
-    $mail->Username = 'test@hostinger-tutorials.com';
-    $mail->Password = 'EMAIL_ACCOUNT_PASSWORD';
-    $mail->setFrom('test@hostinger-tutorials.com', 'Mr. Drago');
-    $mail->addAddress('example@gmail.com', 'Receiver Name');
-    if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
-        $mail->Subject = 'PHPMailer contact form';
-        $mail->isHTML(false);
-        $mail->Body = <<<EOT
-Email: {$_POST['email']}
-Name: {$_POST['name']}
-Message: {$_POST['message']}
-EOT;
-        if (!$mail->send()) {
-            $msg = 'Sorry, something went wrong. Please try again later.';
-        } else {
-            $msg = 'Message sent! Thanks for contacting us.';
-        }
-    } else {
-        $msg = 'Share it with us!';
-    }
-?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
+ <head>
+  <title>Prueba de PHP</title>
+ </head>
+ <body>
+ <?php
+// Varios destinatarios
+$para  = 'jose.nightmare@gmail.com' . ', '; // atención a la coma
+$para .= 'jose.nightmare@gmail.com';
+
+// título
+$título = 'Recordatorio de cumpleaños para Agosto';
+
+// mensaje
+$mensaje = '
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Contact form</title>
+  <title>Recordatorio de cumpleaños para Agosto</title>
 </head>
 <body>
-<h1>Do You Have Anything in Mind?</h1>
-<?php if (!empty($msg)) {
-    echo "<h2>$msg</h2>";
-} ?>
-<form method="POST">
-    <label for="name">Name: <input type="text" name="name" id="name"></label><br><br>
-    <label for="email">Email: <input type="email" name="email" id="email"></label><br><br>   
-    <label for="message">Message: <textarea name="message" id="message" rows="8" cols="20"></textarea></label><br><br>
-    <input type="submit" value="Send">
-</form>
+  <p>¡Estos son los cumpleaños para Agosto!</p>
+  <table>
+    <tr>
+      <th>Quien</th><th>Día</th><th>Mes</th><th>Año</th>
+    </tr>
+    <tr>
+      <td>Joe</td><td>3</td><td>Agosto</td><td>1970</td>
+    </tr>
+    <tr>
+      <td>Sally</td><td>17</td><td>Agosto</td><td>1973</td>
+    </tr>
+  </table>
 </body>
+</html>
+';
+
+// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Cabeceras adicionales
+$cabeceras .= 'To: Mary <jose.nightmare@gmail.com>, Kelly <jose.nightmare@gmail.com>' . "\r\n";
+$cabeceras .= 'From: Recordatorio <jose.saavedra.pinto@gmail.com>' . "\r\n";
+//$cabeceras .= 'Cc: birthdayarchive@example.com' . "\r\n";
+//$cabeceras .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+
+// Enviarlo
+mail($para, $título, $mensaje, $cabeceras);
+?>
+ </body>
 </html>
