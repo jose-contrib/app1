@@ -1,22 +1,14 @@
-<!DOCTYPE html>
 <html>
-<body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
-<?php
-    ini_set( 'display_errors', 1 );
-    error_reporting( E_ALL );
-    $from = "jose.saavedra.pinto@gmail.com";
-    $to = "jose.nightmare@gmail.com";
-    $subject = "Checking PHP mail";
-    $message = "PHP mail works just fine";
-    $headers = "From:" . $from;
-    mail($to,$subject,$message, $headers);
-    echo "The email message was sent.";
-?>
+ <head>
+  <title>Prueba de PHP</title>
+ </head>
+ <body>
+		<form action="correo.php" method="post">
+			<input type="text" name="asunto"/></br></br>
+			<textarea name="mensaje"></textarea></br></br>
+			<input type="submit" value="enviar" />
+		</form>
 
 
-</body>
+ </body>
 </html>
