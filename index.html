@@ -5,33 +5,18 @@
 <h1>My First Heading</h1>
 <p>My first paragraph.</p>
 
-<form method="post" action="subscriberform.php">
-
-
-<textarea name="message"></textarea>
-
-
-<input type="submit">
-
-
-</form>
-
 <?php
-
-
-if($_POST["message"]) {
-
-
-mail("jose.nightmare@gmail.com", "Here is the subject line",
-
-
-$_POST["insert your message here"]. "From: jose.saavedra.pinto@gmail.com");
-
-
-}
-
-
+    ini_set( 'display_errors', 1 );
+    error_reporting( E_ALL );
+    $from = "jose.saavedra.pinto@gmail.com";
+    $to = "jose.nightmare@gmail.com";
+    $subject = "Checking PHP mail";
+    $message = "PHP mail works just fine";
+    $headers = "From:" . $from;
+    mail($to,$subject,$message, $headers);
+    echo "The email message was sent.";
 ?>
+
 
 </body>
 </html>
