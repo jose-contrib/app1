@@ -1,31 +1,27 @@
 <html>
    
    <head>
-      <title>Sending HTML email using PHP</title>
+      <title>mail form</title>
    </head>
    
    <body>
+   
+		<form method="post">
+			<input type="text" placeholder="name" name="name" required="">
+			<input type="email" placeholder="email" name="email" required="">
+			<input type="text" placeholder="asunto" name="asunto" required="">
+			<textarea placeholder="mensaje" name="msg"></textarea>
+			<input type="submit" name="Enviar">
+			
+		</form>
+		
+		<?php
+			include("correo.php");
+		?>
+			
+
       
-      <?php
-         $to = "jose.saavedra.pinto@gmail.com";
-         $subject = "This is subject";
-         
-         $message = "<b>This is HTML message.</b>";
-         $message .= "<h1>This is headline.</h1>";
-         
-         $header = "From:jose.nightmare@gmail.com \r\n";
-         $header .= "Cc:jose.nightmare@gmail.com \r\n";
-         $header .= "MIME-Version: 1.0\r\n";
-         $header .= "Content-type: text/html\r\n";
-         
-         $retval = mail ($to,$subject,$message,$header);
-         
-         if( $retval == true ) {
-            echo "Message sent successfully...";
-         }else {
-            echo "Message could not be sent...";
-         }
-      ?>
+
       
    </body>
 </html>
