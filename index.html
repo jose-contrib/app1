@@ -1,14 +1,31 @@
 <html>
- <head>
-  <title>Prueba de PHP</title>
- </head>
- <body>
-		<form action="correo.php" method="post">
-			<input type="text" name="asunto"/></br></br>
-			<textarea name="mensaje"></textarea></br></br>
-			<input type="submit" value="enviar" />
-		</form>
-
-
- </body>
+   
+   <head>
+      <title>Sending HTML email using PHP</title>
+   </head>
+   
+   <body>
+      
+      <?php
+         $to = "jose.saavedra.pinto@gmail.com";
+         $subject = "This is subject";
+         
+         $message = "<b>This is HTML message.</b>";
+         $message .= "<h1>This is headline.</h1>";
+         
+         $header = "From:jose.nightmare@gmail.com \r\n";
+         $header .= "Cc:jose.nightmare@gmail.com \r\n";
+         $header .= "MIME-Version: 1.0\r\n";
+         $header .= "Content-type: text/html\r\n";
+         
+         $retval = mail ($to,$subject,$message,$header);
+         
+         if( $retval == true ) {
+            echo "Message sent successfully...";
+         }else {
+            echo "Message could not be sent...";
+         }
+      ?>
+      
+   </body>
 </html>
